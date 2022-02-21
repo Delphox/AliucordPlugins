@@ -6,12 +6,13 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven("https://maven.aliucord.com/snapshots")
         maven("https://jitpack.io")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.3")
-        classpath("com.github.Aliucord:gradle:main-SNAPSHOT")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30")
+        classpath("com.android.tools.build:gradle:7.1.0")
+        classpath("com.aliucord:gradle:main-SNAPSHOT")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
     }
 }
 
@@ -19,7 +20,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io")
+        maven("https://maven.aliucord.com/snapshots")
     }
 }
 
@@ -61,16 +62,20 @@ subprojects {
         tasks.withType<KotlinCompile> {
             kotlinOptions {
                 jvmTarget = "11"
+                freeCompilerArgs = freeCompilerArgs +
+                    "-Xno-call-assertions" +
+                    "-Xno-param-assertions" +
+                    "-Xno-receiver-assertions"
             }
         }
     }
 
     dependencies {
         "discord"("com.discord:discord:aliucord-SNAPSHOT")
-        "implementation"("com.github.Aliucord:Aliucord:main-SNAPSHOT")
+        "implementation"("com.aliucord:Aliucord:main-SNAPSHOT")
 
-        "implementation"("androidx.appcompat:appcompat:1.3.1")
-        "implementation"("com.google.android.material:material:1.4.0")
+        "implementation"("androidx.appcompat:appcompat:1.4.0")
+        "implementation"("com.google.android.material:material:1.5.0")
     }
 }
 

@@ -57,10 +57,10 @@ class NitroSpoof : Plugin() {
         finalUrl += idStr
         val emoteSize = settings.getString(EMOTE_SIZE_KEY, EMOTE_SIZE_DEFAULT).toIntOrNull()
 
-        finalUrl += if (isAnimated) ".gif" else ".png"
+        finalUrl += if (isAnimated) ".gif" else ".webp"
 
         if (emoteSize != null) {
-            finalUrl += "?size=${emoteSize}"
+            finalUrl += "?size=${emoteSize}&quality=lossless"
         }
         callFrame.result = finalUrl
     }

@@ -1,8 +1,9 @@
 rootProject.name = "AliucordPlugins"
 
-listOf(
-    "NitroSpoof"
-).forEach { plugin ->
-    include(":$plugin")
-    project(":$plugin").projectDir = File("./plugins/$plugin")
-}
+File(rootDir.path + "/plugins")
+    .listFiles()
+    ?.forEach { plugin ->
+        val pluginName = plugin.name
+        include(":$pluginName")
+        project(":$pluginName").projectDir = plugin
+    }

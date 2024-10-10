@@ -34,6 +34,10 @@ class NitroSpoof : Plugin() {
             ModelEmojiCustom::class.java.getDeclaredMethod("isAvailable"),
             InsteadHook { true }
         )
+        patcher.patch(
+            ModelEmojiCustom::class.java.getDeclaredMethod("isActuallyAvailable"),
+            InsteadHook { true }
+        )
     }
 
     override fun stop(context: Context) {

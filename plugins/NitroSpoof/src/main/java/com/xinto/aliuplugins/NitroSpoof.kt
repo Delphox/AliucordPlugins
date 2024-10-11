@@ -46,7 +46,7 @@ class NitroSpoof : Plugin() {
 
     private fun getChatReplacement(callFrame: XC_MethodHook.MethodHookParam) {
         val thisObject = callFrame.thisObject
-        val isUsable = thisObject.getCachedField<Boolean>("isActuallyAvailable")
+        val isUsable = thisObject.getCachedField<Boolean>("isAvailable")
 
         if (isUsable) {
             callFrame.result = callFrame.result

@@ -45,7 +45,7 @@ class NitroSpoof : Plugin() {
         val isUsable = thisObject.getCachedField<Boolean>("isUsable")
         val isAvailable = thisObject.getCachedField<Boolean>("isAvailable")
 
-        if (isUsable && isAvailable) {
+        if (isUsable) || if (isAvailable) {
             callFrame.result = callFrame.result
             return
         }

@@ -34,10 +34,6 @@ class NitroSpoof : Plugin() {
             ModelEmojiCustom::class.java.getDeclaredMethod("isAvailable"),
             InsteadHook { true }
         )
-        patcher.patch(
-            ModelEmojiCustom::class.java.getDeclaredMethod("isActuallyAvailable"),
-            InsteadHook { true }
-        )
     }
 
     override fun stop(context: Context) {
@@ -46,7 +42,7 @@ class NitroSpoof : Plugin() {
 
     private fun getChatReplacement(callFrame: XC_MethodHook.MethodHookParam) {
         val thisObject = callFrame.thisObject
-        val isUsable = thisObject.getCachedField<Boolean>("isAvailable")
+        val isUsable = thisObject.getCachedField<Boolean>("isUsable")
 
         if (isUsable) {
             callFrame.result = callFrame.result

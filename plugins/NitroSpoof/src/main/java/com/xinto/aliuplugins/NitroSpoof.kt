@@ -45,11 +45,9 @@ class NitroSpoof : Plugin() {
         val isUsable = thisObject.getCachedField<Boolean>("isUsable")
         val isAvailable = thisObject.getCachedField<Boolean>("isAvailable")
 
-        if (isUsable) {
-		 if (isAvailable) {
+        if (isUsable || !isAvailable) {
             callFrame.result = callFrame.result
             return
-		 }
         }
 
         var finalUrl = "https://cdn.discordapp.com/emojis/"
